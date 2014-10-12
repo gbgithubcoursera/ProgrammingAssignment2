@@ -1,8 +1,6 @@
 #!/usr/bin/Rscript
 
-## Put comments here that give an overall description of what your
-## functions do
-
+# The makeCacheMatrix sets and returns the matrix that is cached for later use.
 makeCacheMatrix <- function(x = matrix()) {
         mat <- NULL
         set <- function(y){
@@ -17,11 +15,7 @@ makeCacheMatrix <- function(x = matrix()) {
         list(set=set, get=get,setmatrix=setmatrix,getmatrix=getmatrix)
 }
 
-# Make and Cache the Matrix at the same time
-#cachedMat <- makeCacheMatrix(matrix(1:4,2,2))
-#cachedMat
-
-## Write a short comment describing this function
+## Retrieves the cached matrix and calculates it inverse.
 cacheSolve <- function(x=matrix(), ...) {
         mat <- x["getmatrix"]
 
@@ -47,8 +41,9 @@ userMatrix <- matrix(1:4,2,2)
 
 a <- makeCacheMatrix()
 a$set(userMatrix)
-message("\nCached Matrix")
+message("\nPrint the Cached Matrix")
 a$get()
 
 a$setmatrix(a$get())
 cacheSolve(a$getmatrix())
+message()
